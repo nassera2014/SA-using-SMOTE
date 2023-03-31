@@ -67,9 +67,6 @@ from sklearn import model_selection, preprocessing
 from sklearn.feature_extraction.text import TfidfVectorizer
 sm1 = SMOTE(random_state = 2)
 
-# tfidf_vect = TfidfVectorizer(analyzer='word', token_pattern=r'\w{1,}', max_features=100000)
-# tfidf_vect.fit(X)
-# xtrain_tfidf =  tfidf_vect.transform(X)
 
 maxLen = 150
 tokenizer = Tokenizer(num_words=5000)
@@ -88,12 +85,6 @@ print("After Over Sampling, count of the label '0': {}".format(sum(y__res == 0))
 
 X_train_indices, X_test_indices, Y_train, Y_test = train_test_split(X__res, y__res, test_size=0.2, random_state=45)
 
-# tokenizer = Tokenizer(num_words=5000)
-# tokenizer.fit_on_texts(X_train)
-#
-# words_to_index = tokenizer.word_index
-# print(len(words_to_index))
-#
 BERT_FP = 'C:/Users/admin/Desktop/Data/DarijaBERT/'
 
 def get_bert_embed_matrix():
@@ -128,8 +119,6 @@ def LSTM_(input_shape):
     embeddings = embedding_layer(X_indices)
     X = LSTM(128, return_sequences=True)(embeddings)
     X = Dropout(0.6)(X)
-    # X = LSTM(128, return_sequences=True)(X)
-    # X = Dropout(0.6)(X)
     X = LSTM(128)(X)
     X = Dense(1, activation='sigmoid')(X)
     model = Model(inputs=X_indices, outputs=X)
@@ -157,8 +146,7 @@ def GRU_(input_shape):
     return model
 maxLen = 150
 
-# X_train_indices = tokenizer.texts_to_sequences(X_train)
-# X_train_indices = pad_sequences(X_train_indices, maxlen=maxLen, padding='post')
+# Fit the base classifiers 
 adam = keras.optimizers.Adam(learning_rate=0.0001)
 model1 = CNN((maxLen,))
 print(model1.summary())
@@ -260,9 +248,7 @@ def stacked_prediction(members, model, inputX):
     yhat = model.predict(stackedX)
     return yhat
 
-# evaluate proposed model (MDSA) on test set
-# X_test_indices = tokenizer.texts_to_sequences(X_test)
-# X_test_indices = pad_sequences(X_test_indices, maxlen=maxLen, padding='post')
+# evaluate proposed model on test set
 yhat = stacked_prediction(members, modelStacked, X_test_indices)
 score = cross_val_score(modelStacked,X_test_indices,Y_test,cv = 5,scoring = 'accuracy')
 print("The accuracy score of stacked model is:",score.mean())
