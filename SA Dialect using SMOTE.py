@@ -41,7 +41,7 @@ def process(text):
     text = " ".join(text.split())  # delete multispace
     return text
 
-data = pd.read_csv('C:/Users/admin/Desktop/Data/dataset.csv')
+data = pd.read_csv('dataset.csv')
 data = data[:39560]
 data['clean_text'] = data['text'].apply(lambda cw: clean(cw))
 data['clean_text_process'] = data['clean_text'].apply(lambda cw: process(cw))
@@ -85,7 +85,7 @@ print("After Over Sampling, count of the label '0': {}".format(sum(y__res == 0))
 
 X_train_indices, X_test_indices, Y_train, Y_test = train_test_split(X__res, y__res, test_size=0.2, random_state=45)
 
-BERT_FP = 'C:/Users/admin/Desktop/Data/DarijaBERT/'
+BERT_FP = 'DarijaBERT/'
 
 def get_bert_embed_matrix():
     bert = BertModel.from_pretrained(BERT_FP)
