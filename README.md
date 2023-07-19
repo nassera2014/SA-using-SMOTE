@@ -3,7 +3,7 @@ Sentiment Analysis of Dialect Imbalanced Dataset using SMOTE
 
 The Sentiment Analysis of Dialect Imbalanced Dataset using SMOTE is novel method based on DarijaBERT embedding and stacked deep learning algorithms, namely: LSTM, BiLSTM, GRU, and CNN that provide state-of-the-art results on the imbalanced dialect dataset in terms of accuracy.
 
-![archi github](https://user-images.githubusercontent.com/7195500/228972311-7c450749-ede9-4718-a30e-036c312de5d3.PNG)
+![archi github 2](https://github.com/nassera2014/Dialect-SA-using-SMOTE/assets/7195500/9151d287-8064-43d0-a52a-b099021d5e00)
 
 # Dataset
 This dataset consists of 49 860 Dialect and Arabic tweets labled as Positive and Negative tweets.
